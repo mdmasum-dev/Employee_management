@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    
+
+
+
+
+<!DOCTYPE html>
+<html>
+<style>
+form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+label {display: block;}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+</style>
+<body>
+
+<h2>Style an HTML Form with CSS</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+  <label for="fname">emp_Id</label>
+  <input type="number" id="fname" name="emp_Id" value="{{Employee_Data.emp_Id}}" placeholder="Your name..">
+
+  <label for="lname">emp_name</label>
+  <input type="text" id="lname" name="emp_name" value="{{Employee_Data.emp_name}}" placeholder="Your last name..">
+
+<label for="fname">department</label>
+  <input type="text" id="fname" name="department" value="{{Employee_Data.department}}" placeholder="Your name..">
+
+  <label for="emp_picture">Employee Picture</label>
+<input type="file" id="emp_picture" name="emp_picture">
+
+{% if Employee_Data.emp_picture %}
+    <img src="{{ Employee_Data.emp_picture.url }}" height="50" width="50" alt="Employee Picture">
+{% endif %}
+  
+  <input type="submit" value="Update">
+</form>
+
+</body>
+</html>
+
+
+{% endblock body %}
